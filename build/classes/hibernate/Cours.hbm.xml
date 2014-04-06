@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 6 avr. 2014 17:27:45 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="beans.Cours" table="COURS">
+        <id name="idCours" type="int">
+            <column name="IDCOURS" />
+            <generator class="assigned" />
+        </id>
+        <property name="libelle" type="java.lang.String">
+            <column name="LIBELLE" />
+        </property>
+    </class>
+</hibernate-mapping>
