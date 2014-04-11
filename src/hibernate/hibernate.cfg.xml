@@ -5,16 +5,19 @@
 <hibernate-configuration>
     <session-factory>
         <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/lism</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/lism2</property>
         <property name="hibernate.connection.username">root</property>
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
         <property name="transaction.factory_class">org.hibernate.transaction.JDBCTransactionFactory</property>
 		<property name="current_session_context_class">thread</property>
 		<property name="hibernate.show_sql">true</property>
         <mapping resource="hibernate/Cours.hbm.xml"/>
+        <mapping resource="hibernate/CoursSession.hbm.xml"/>
+        <mapping resource="hibernate/CoursSessionItem.hbm.xml"/>
         <mapping resource="hibernate/Enseignant.hbm.xml"/>
+        <mapping resource="hibernate/EtudiantCoursEval.hbm.xml"/>
+        <mapping resource="hibernate/EvalSession.hbm.xml"/>
         <mapping resource="hibernate/Etudiant.hbm.xml"/>
         <mapping resource="hibernate/Salle.hbm.xml"/>
-        <mapping resource="hibernate/EtudiantCoursEval.hbm.xml"/>
     </session-factory>
 </hibernate-configuration>

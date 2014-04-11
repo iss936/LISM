@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 11 avr. 2014 11:47:58 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="beans.CoursSession" table="COURSSESSION">
+        <id name="idCoursSession" type="int">
+            <column name="IDCOURSSESSION" />
+            <generator class="assigned" />
+        </id>
+        <property name="dateDebut" type="java.sql.Date">
+            <column name="DATEDEBUT" />
+        </property>
+        <property name="dateFin" type="java.sql.Date">
+            <column name="DATEFIN" />
+        </property>
+        <property name="idCoursSessionItem" type="int">
+            <column name="IDCOURSSESSIONITEM" />
+        </property>
+    </class>
+</hibernate-mapping>

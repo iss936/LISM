@@ -3,7 +3,7 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated 6 avr. 2014 17:24:12 by Hibernate Tools 3.4.0.CR1 -->
 <hibernate-mapping>
-    <class name="beans.Etudiant" table="ETUDIANT">
+    <class name="beans.Etudiant" table="etudiant">
         <id name="idEtudiant" type="int">
             <column name="IDETUDIANT" />
             <generator class="assigned" />
@@ -13,6 +13,12 @@
         </property>
         <property name="nomEtudiant" type="java.lang.String">
             <column name="NOMETUDIANT" />
+        </property>
+        <property name="login" type="java.lang.String">
+        	<column name="LOGIN" />
+        </property>
+        <property name="mdp" type="java.lang.String">
+        	<column name="MDP" />
         </property>
     </class>
 </hibernate-mapping>

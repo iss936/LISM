@@ -4,13 +4,11 @@
 <!-- Generated 6 avr. 2014 18:05:38 by Hibernate Tools 3.4.0.CR1 -->
 <hibernate-mapping>
     <class name="beans.EtudiantCoursEval" table="ETUDIANTCOURSEVAL">
-        <id name="idEtudiant" type="int">
-            <column name="IDETUDIANT" />
-            <generator class="assigned" />
-        </id>
-        <property name="idCoursSession" type="int">
-            <column name="IDCOURSSESSION" />
-        </property>
+    	<composite-id>
+    		<key-property name="idEtudiant" type="int" column="IDETUDIANT"/>
+    		<key-property name="idCoursSession" type="int" column="IDCOURSSESSION"/>
+    		<key-property name="idEvalSession" type="int" column="IDEVALSESSION"/>
+    	</composite-id>
         <property name="note" type="float">
             <column name="NOTE" />
         </property>

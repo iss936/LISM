@@ -14,5 +14,11 @@
         <property name="nomEnseignant" type="java.lang.String">
             <column name="NOMENSEIGNANT" />
         </property>
+        <property name="login" type="java.lang.String">
+        	<column name="LOGIN" />
+        </property>
+        <property name="mdp" type="java.lang.String">
+        	<column name="MDP" />
+        </property>
     </class>
 </hibernate-mapping>

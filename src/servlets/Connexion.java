@@ -23,15 +23,12 @@ public class Connexion extends HttpServlet{
         String login = request.getParameter("login");
         String mdp = request.getParameter("mdp");
         Etudiant e = Etudiant.getUnEtudiant(login, mdp);
-        
         if(e == null){
         	session.setAttribute("erreurs", true);
         	response.sendRedirect("index.jsp");
         }
         else
         {
-        	session.setAttribute("lesOeuvresRecherches", null);
-        	session.setAttribute("lesOeuvresTrouver", null);
         	session.setAttribute("etudiant", e);
         	response.sendRedirect("accueil.jsp");
         }

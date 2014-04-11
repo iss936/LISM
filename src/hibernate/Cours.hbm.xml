@@ -8,8 +8,8 @@
             <column name="IDCOURS" />
             <generator class="assigned" />
         </id>
-        <property name="libelle" type="java.lang.String">
-            <column name="LIBELLE" />
+        <property name="libelleCours" type="java.lang.String">
+            <column name="LIBELLECOURS" />
         </property>
     </class>
 </hibernate-mapping>

@@ -1,15 +1,23 @@
 package beans;
 
-public class EtudiantCoursEval {
+import java.io.Serializable;
 
+public class EtudiantCoursEval implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int idEtudiant;
 	private int idCoursSession;
+	private int idEvalSession;
 	private float note;
 	private String status;
 	
-	public EtudiantCoursEval(int idEtudiant, int idCoursSession, float note, String status) {
+	public EtudiantCoursEval(int idEtudiant, int idCoursSession, int idEvalSession, float note, String status) {
 		this.setIdEtudiant(idEtudiant);
 		this.setIdCoursSession(idCoursSession);
+		this.setIdEvalSession(idEvalSession);
 		this.setNote(note);
 		this.setStatus(status);
 	}
@@ -47,6 +55,20 @@ public class EtudiantCoursEval {
 	}
 
 	/**
+	 * @return the idEvalSession
+	 */
+	public int getIdEvalSession() {
+		return idEvalSession;
+	}
+
+	/**
+	 * @param idEvalSession the idEvalSession to set
+	 */
+	public void setIdEvalSession(int idEvalSession) {
+		this.idEvalSession = idEvalSession;
+	}
+
+	/**
 	 * @return the note
 	 */
 	public float getNote() {
@@ -74,5 +96,15 @@ public class EtudiantCoursEval {
 		this.status = status;
 	}
 	
+	@Override
+	public boolean equals(Object o)
+	{
+		return super.equals(o);
+	}
 	
+	@Override
+	public int hashCode()
+	{
+		return super.hashCode();
+	}
 }
