@@ -9,8 +9,6 @@ import javax.servlet.http.HttpSession;
 import beans.*;
 
 public class Connexion extends HttpServlet{
-
-	
 	/**
 	 * 
 	 */
