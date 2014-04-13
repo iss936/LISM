@@ -1,20 +1,326 @@
-/* Général ------------------------------------------------------------------------------------- */
+/* /////////////////////////////////////////////////////////////////////////////////////////// */
+/* /////////////////////////////////       BACKGROUND        ///////////////////////////////// */
+/* /////////////////////////////////////////////////////////////////////////////////////////// */
 
-body, p, legend, label, input {
-    font: normal 8pt verdana, helvetica, sans-serif;
+html, body
+{
+	margin : 0px;
+	padding : 0px;
 }
 
-/* Forms --------------------------------------------------------------------------------------- */
-fieldset {
-    padding: 10px;
-    border: 1px #0568CD solid;
-    margin: 10px;
+html
+{
+	background-color : #CFCFCF;
+	font-family : "Trebuchet MS" , sans-serif;
 }
 
-legend {
-    font-weight: bold;
-    color: #0568CD;
+
+/* /////////////////////////////////////////////////////////////////////////////////////////// */
+/* /////////////////////////////////    STRUCTURE GLOBALE    ///////////////////////////////// */
+/* /////////////////////////////////////////////////////////////////////////////////////////// */
+
+#conteneur
+{
+	width : 80%;
+	min-width : 600px;
+	margin : auto;
+	margin-top : 35px;
+	padding-bottom : 25px;
 }
+
+#corps
+{
+	width : 100%;
+	background-color : #FFFFFF;
+	color : #000000;
+}
+
+#marge_interieure
+{
+	padding : 5px;
+}
+
+
+/* /////////////////////////////////////////////////////////////////////////////////////////// */
+/* /////////////////////////////////        BANNIERE        ////////////////////////////////// */
+/* /////////////////////////////////////////////////////////////////////////////////////////// */
+
+#banniere
+{
+	height : 180px;
+	background : url("../images/banniere.jpg") top left no-repeat;
+	overflow : hidden;
+	position : relative;
+}
+
+#logo
+{
+	width : 128px;
+	height : 128px;
+	background : url("../images/logo.png");
+	float : left;
+	position : relative;
+	left : 60px;
+	top : 20px;
+}
+
+
+/* /////////////////////////////////////////////////////////////////////////////////////////// */
+/* /////////////////////////////////          TEXTE          ///////////////////////////////// */
+/* /////////////////////////////////////////////////////////////////////////////////////////// */
+
+#texte 
+{
+	padding : 20px;
+	text-align : justify;
+	font-size : 15px;
+}
+
+.cadre
+{
+	border : 1px solid #000000;
+	background-color : #ededed;
+}
+
+.titre
+{
+	height : 26px;
+	background : url("../images/cadre.png");
+	color : #FFFFFF;
+	text-align : center;
+	font-size : 14px;
+	font-weight : bold;
+	padding-top : 7px;
+}
+
+.marge_interne
+{
+	padding : 10px 10px 0px 10px;
+}
+
+p
+{
+	margin-top : 0px;
+}
+
+h1
+{
+	font-size : 19px;
+	margin-top : 0px;
+}
+
+h2
+{
+	font-size : 16px;
+	margin-top : 0px;
+}
+		
+a
+{
+	color : #288de8;
+	text-decoration : none;
+}
+
+a:hover
+{
+	color : #ff8000;
+}
+
+#overflow
+{
+	overflow : hidden;
+}
+
+
+/* /////////////////////////////////////////////////////////////////////////////////////////// */
+/* /////////////////////////////////     MENU HORIZONTAL     ///////////////////////////////// */
+/* /////////////////////////////////////////////////////////////////////////////////////////// */
+
+#MH
+{
+	height : 55px;
+	background : url("../images/MH.png");
+	margin : 0px;
+	padding : 0px;
+	text-align : center;
+}
+
+#MH a
+{
+	display : inline-block;
+	margin : 0px;
+	font-size : 15px;
+	font-weight : bold;
+}
+
+.groupe_lien_MH
+{
+	display : inline-block;
+	position: relative;
+	margin-right:5px;
+	margin-left:-1px;
+	z-index : 90;
+}
+
+.groupe_lien_MH a.menu_MH
+{
+	height : 38px;
+	width:160px;
+	padding-top : 17px;
+	padding-left:0px;
+	padding-right:0px;
+	text-decoration:none;
+	text-align : center;
+	color : #969696;
+}
+
+.groupe_sublien_MH
+{
+	display : none;
+	position: absolute;
+	min-width :100%;
+	top:55px;
+	left :0px;
+	padding-left:0px;
+	padding-right:0px;
+	text-align : left;
+}
+
+.sublien_MH a
+{
+	position : relative;
+	height : 29px;
+	width : 120px;
+	padding-top : 8px;
+	background : url("../images/MH_deroulant.png");
+	background-repeat: repeat;
+	text-align : left;
+	color:#FFFFFF;
+}
+
+.groupe_sublien_MH a
+{
+	padding-top : 8px;
+	padding-left:20px;
+	padding-right:20px;
+	white-space: pre;
+	color:#FFFFFF;
+}
+
+.groupe_lien_MH:hover .groupe_sublien_MH, .groupe_lien_MH_hover .groupe_sublien_MH
+{
+}
+
+.groupe_lien_MH:hover a.menu_MH, .groupe_lien_MH_hover a.menu_MH
+{
+	background : url("../images/MH_hover.png");
+	color : #000000;
+}
+
+.sublien_MH a:hover
+{
+	background : url("../images/MH_deroulant_hover.png");
+	color:#FFFFFF;
+}
+
+.MH_deroulant_bottom
+{
+	height : 1px;
+	width : 160px;
+	background : url("../images/MH_deroulant_bottom.png") repeat-x;
+}
+
+
+/* /////////////////////////////////////////////////////////////////////////////////////////// */
+/* /////////////////////////////////       BAS DE PAGE       ///////////////////////////////// */
+/* /////////////////////////////////////////////////////////////////////////////////////////// */
+
+#pied_de_page
+{
+	height : 34px;
+	background : url("../images/pied_de_page.png") center;
+	text-align : center;
+	padding-top : 16px;
+	color : #FFFFFF;
+}
+
+#pied_de_page a
+{
+	color : #FFFFFF;
+}
+
+
+/* /////////////////////////////////////////////////////////////////////////////////////////// */
+/* /////////////////////////////////         BORDURE         ///////////////////////////////// */
+/* /////////////////////////////////////////////////////////////////////////////////////////// */
+
+#CHG
+{
+	background : url("../images/CHG.png") no-repeat top left;
+	float : left;
+	width : 8px;
+	height : 8px;
+	margin : 0px;
+}
+
+#CHD
+{
+	background : url("../images/CHD.png") no-repeat top right;
+	float : right;
+	width : 8px;
+	height : 8px;
+	margin : 0px;
+}
+
+#CBG
+{
+	background : url("images/CBG.png") no-repeat bottom left;
+	float : left;
+	width : 8px;
+	height : 8px;
+	margin : 0px;
+}
+
+#CBD
+{
+	background : url("../images/CBD.png") no-repeat bottom right;
+	float : right;
+	width : 8px;
+	height : 8px;
+	margin : 0px;
+}
+
+#BH
+{
+	background : url("../images/BH.png") repeat-x top center;
+	margin-right : 8px;
+	margin-left : 8px;
+	height : 8px;
+}
+
+#BG
+{
+	background : url("../images/BG.png") repeat-y left;
+	padding-left : 8px;
+	margin : 0px;
+}
+
+#BD
+{
+	background : url("../images/BD.png") repeat-y right;
+	padding-right : 8px;
+	margin : 0px;
+}
+
+#BB
+{
+	background : url("../images/BB.png") repeat-x bottom center;
+	margin-right : 8px;
+	margin-left : 8px;
+	height : 8px;
+	padding : 0px;
+}
+
 
 form label {
     float: left;
@@ -30,48 +336,3 @@ form input {
 form input.sansLabel {
     margin-left: 200px;
 }
-
-/* Styles et couleurs -------------------------------------------------------------------------- */
-.requis {
-    color: #c00;
-}
-
-.erreur {
-    color: #900;
-}
-
-.succes {
-    color: #090;
-}
-
-.info {
-    font-style: italic;
-    color: #E8A22B;
-}
-
-ul {
- padding:0;
- margin:0;
- list-style-type:none;
- }
-li {
- margin-left:2px;
- float:left; /*pour IE*/
- }
-ul li a {
- display:block;
- float:left;   
- width:100px;
- background-color:#6495ED;
- color:black;
- text-decoration:none;
- text-align:center;
- padding:5px;
- border:2px solid;
- /*pour avoir un effet "outset" avec IE :*/
- border-color:#DCDCDC #696969 #696969 #DCDCDC;
- }
-ul li a:hover {
- background-color:#D3D3D3;
- border-color:#696969 #DCDCDC #DCDCDC #696969;
- } 
