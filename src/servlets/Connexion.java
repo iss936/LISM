@@ -30,6 +30,7 @@ public class Connexion extends HttpServlet{
         else
         {
         	session.setAttribute("etudiant", e);
+        	session.setAttribute("lesCours", Cours.getLesCours());
         	response.sendRedirect("accueil.jsp");
         }
     }
