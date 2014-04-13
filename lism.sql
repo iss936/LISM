@@ -168,7 +168,24 @@ ALTER TABLE `etudiantcourseval`
 --
 ALTER TABLE `evalsession`
   ADD CONSTRAINT `FK_evalsession_1` FOREIGN KEY (`idCoursSession`) REFERENCES `courssession` (`idCoursSession`);
+  
+  -- Ajout clé de la table cours (13/04)
+  ALTER TABLE `courssession` ADD `idCours` INT NOT NULL;
+ALTER TABLE `courssession` CHANGE `idCours` `idCours` INT( 11 ) UNSIGNED NOT NULL;
+Alter table courssession
+add foreign key(idCours) references cours(idCours);
 
+-- creation de la table inscription(13/04)
+CREATE TABLE IF NOT EXISTS `inscriptionsession` (
+  `idEtudiant` integer unsigned NOT NULL,
+  `idCoursSession` integer unsigned NOT NULL,
+  PRIMARY KEY (`idEtudiant`,`idCoursSession`)
+);
+Alter table inscriptionsession
+add foreign key(idEtudiant) references etudiant(idetudiant);
+Alter table inscriptionsession
+add foreign key(idCoursSession) references courssession(idCoursSession);
+ 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
