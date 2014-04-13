@@ -13,7 +13,7 @@
 <body>
 
 	<ul>
- 		<li><a href="#">Accueil</a></li>
+ 		<li><a href="accueil.jsp">Accueil</a></li>
  		<li><a href="#">Mes cours</a></li>
  		<li><a href="#">Mes évaluations</a></li>
 	</ul>

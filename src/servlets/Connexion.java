@@ -9,8 +9,6 @@ import javax.servlet.http.HttpSession;
 import beans.*;
 
 public class Connexion extends HttpServlet{
-
-	
 	/**
 	 * 
 	 */
@@ -34,4 +32,12 @@ public class Connexion extends HttpServlet{
         	response.sendRedirect("accueil.jsp");
         }
     }
+	
+	@Override
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+	throws ServletException, IOException {
+		HttpSession session = request.getSession();
+		session.setAttribute("lesCours", Cours.getLesCours());
+		response.sendRedirect("accueil.jsp");
+	}
 }
