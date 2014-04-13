@@ -18,6 +18,7 @@
         <mapping resource="hibernate/EtudiantCoursEval.hbm.xml"/>
         <mapping resource="hibernate/EvalSession.hbm.xml"/>
         <mapping resource="hibernate/Etudiant.hbm.xml"/>
+        <mapping resource="hibernate/InscriptionSession.hbm.xml"/>
         <mapping resource="hibernate/Salle.hbm.xml"/>
     </session-factory>
 </hibernate-configuration>

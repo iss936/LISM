@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client: localhost
--- Généré le: Ven 11 Avril 2014 à 19:56
+-- Généré le: Dim 13 Avril 2014 à 21:12
 -- Version du serveur: 5.5.24-log
 -- Version de PHP: 5.3.13
 
@@ -30,7 +30,16 @@ CREATE TABLE IF NOT EXISTS `cours` (
   `idCours` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `libelleCours` varchar(45) NOT NULL DEFAULT '',
   PRIMARY KEY (`idCours`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+
+--
+-- Contenu de la table `cours`
+--
+
+INSERT INTO `cours` (`idCours`, `libelleCours`) VALUES
+(1, 'Anglais'),
+(2, 'Communication'),
+(3, 'Framework');
 
 -- --------------------------------------------------------
 
@@ -43,7 +52,9 @@ CREATE TABLE IF NOT EXISTS `courssession` (
   `dateDebut` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `dateFin` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `description` varchar(2000) NOT NULL DEFAULT '',
-  PRIMARY KEY (`idCoursSession`)
+  `idCours` int(10) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`idCoursSession`),
+  KEY `FK_courssession_1` (`idCours`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -91,7 +102,7 @@ CREATE TABLE IF NOT EXISTS `etudiant` (
   `login` varchar(45) NOT NULL DEFAULT '',
   `mdp` varchar(45) NOT NULL DEFAULT '',
   PRIMARY KEY (`idEtudiant`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
 -- Contenu de la table `etudiant`
@@ -135,6 +146,19 @@ CREATE TABLE IF NOT EXISTS `evalsession` (
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `inscriptionsession`
+--
+
+CREATE TABLE IF NOT EXISTS `inscriptionsession` (
+  `idEtudiant` int(10) unsigned NOT NULL,
+  `idCoursSession` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`idEtudiant`,`idCoursSession`),
+  KEY `idCoursSession` (`idCoursSession`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `salle`
 --
 
@@ -142,11 +166,27 @@ CREATE TABLE IF NOT EXISTS `salle` (
   `idSalle` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `libelleSalle` varchar(45) NOT NULL DEFAULT '',
   PRIMARY KEY (`idSalle`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+
+--
+-- Contenu de la table `salle`
+--
+
+INSERT INTO `salle` (`idSalle`, `libelleSalle`) VALUES
+(1, 'B1-09'),
+(2, 'A0-06'),
+(3, 'B1-14'),
+(4, 'D1-10');
 
 --
 -- Contraintes pour les tables exportées
 --
+
+--
+-- Contraintes pour la table `courssession`
+--
+ALTER TABLE `courssession`
+  ADD CONSTRAINT `FK_courssession_1` FOREIGN KEY (`idCours`) REFERENCES `cours` (`idCours`);
 
 --
 -- Contraintes pour la table `courssessionitem`
@@ -168,24 +208,15 @@ ALTER TABLE `etudiantcourseval`
 --
 ALTER TABLE `evalsession`
   ADD CONSTRAINT `FK_evalsession_1` FOREIGN KEY (`idCoursSession`) REFERENCES `courssession` (`idCoursSession`);
-  
-  -- Ajout clé de la table cours (13/04)
-  ALTER TABLE `courssession` ADD `idCours` INT NOT NULL;
-ALTER TABLE `courssession` CHANGE `idCours` `idCours` INT( 11 ) UNSIGNED NOT NULL;
-Alter table courssession
-add foreign key(idCours) references cours(idCours);
 
--- creation de la table inscription(13/04)
-CREATE TABLE IF NOT EXISTS `inscriptionsession` (
-  `idEtudiant` integer unsigned NOT NULL,
-  `idCoursSession` integer unsigned NOT NULL,
-  PRIMARY KEY (`idEtudiant`,`idCoursSession`)
-);
-Alter table inscriptionsession
-add foreign key(idEtudiant) references etudiant(idetudiant);
-Alter table inscriptionsession
-add foreign key(idCoursSession) references courssession(idCoursSession);
- 
+--
+-- Contraintes pour la table `inscriptionsession`
+--
+ALTER TABLE `inscriptionsession`
+  ADD CONSTRAINT `inscriptionsession_ibfk_3` FOREIGN KEY (`idCoursSession`) REFERENCES `courssession` (`idCoursSession`),
+  ADD CONSTRAINT `inscriptionsession_ibfk_1` FOREIGN KEY (`idEtudiant`) REFERENCES `etudiant` (`idEtudiant`),
+  ADD CONSTRAINT `inscriptionsession_ibfk_2` FOREIGN KEY (`idCoursSession`) REFERENCES `courssession` (`idCoursSession`);
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

@@ -6,7 +6,7 @@
 <% List<Cours> lesCours = (List<Cours>)session.getAttribute("lesCours"); %>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" >
 	<head>
-		<title>Titre du site</title>
+		<title>LISM</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 		<link rel="stylesheet" media="screen" type="text/css" title="Design" href="${pageContext.request.contextPath}/inc/style.css" />
 		<!--[if IE 6]><link rel="stylesheet" media="screen" type="text/css" title="Design" href="${pageContext.request.contextPath}/inc/ie6.css" /> <![endif]-->
