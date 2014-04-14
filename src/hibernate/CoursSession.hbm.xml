@@ -15,13 +15,13 @@
             <column name="DATEFIN" />
         </property>
         <property name="description" type="java.lang.String">
-        	<column name="DESCRIPTION" />
-        </property>
-        <property name="typeCoursSession" type="java.lang.String">
-        	<column name="TYPECOURSSESSION"/>
+            <column name="DESCRIPTION" />
         </property>
         <property name="idCours" type="int">
             <column name="IDCOURS" />
+        </property>
+        <property name="typeCoursSession" type="java.lang.String">
+            <column name="TYPECOURSSESSION" />
         </property>
     </class>
 </hibernate-mapping>

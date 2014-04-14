@@ -25,4 +25,12 @@
     <servlet-name>Historique</servlet-name>
     <url-pattern>/Historique</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>FicheCoursSession</servlet-name>
+    <servlet-class>servlets.FicheCoursSession</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>FicheCoursSession</servlet-name>
+    <url-pattern>/FicheCoursSession</url-pattern>
+  </servlet-mapping>
 </web-app>
