@@ -14,8 +14,14 @@
         <property name="dateFin" type="java.sql.Date">
             <column name="DATEFIN" />
         </property>
-        <property name="idCoursSessionItem" type="int">
-            <column name="IDCOURSSESSIONITEM" />
+        <property name="description" type="java.lang.String">
+        	<column name="DESCRIPTION" />
+        </property>
+        <property name="typeCoursSession" type="java.lang.String">
+        	<column name="TYPECOURSSESSION"/>
+        </property>
+        <property name="idCours" type="int">
+            <column name="IDCOURS" />
         </property>
     </class>
 </hibernate-mapping>

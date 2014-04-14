@@ -7,13 +7,16 @@ public class CoursSession {
 	private int idCoursSession;
 	private Date dateDebut;
 	private Date dateFin;
-	private int idCoursSessionItem;
+	private String description;
+	private String typeCoursSession;
+	private int idCours;
 	
-	public CoursSession(int idCoursSession, Date dateDebut, Date dateFin, int idCoursSessionItem) {
+	public CoursSession(int idCoursSession, Date dateDebut, Date dateFin, String description, int idCours) {
 		this.setIdCoursSession(idCoursSession);
 		this.setDateDebut(dateDebut);
 		this.setDateFin(dateFin);
-		this.setIdCoursSessionItem(idCoursSessionItem);
+		this.setDescription(description);
+		this.setIdCours(idCours);
 	}
 	
 	public CoursSession() {
@@ -63,16 +66,44 @@ public class CoursSession {
 	}
 
 	/**
-	 * @return the idCoursSessionItem
+	 * @return the description
 	 */
-	public int getIdCoursSessionItem() {
-		return idCoursSessionItem;
+	public String getDescription() {
+		return description;
 	}
 
 	/**
-	 * @param idCoursSessionItem the idCoursSessionItem to set
+	 * @param description the description to set
 	 */
-	public void setIdCoursSessionItem(int idCoursSessionItem) {
-		this.idCoursSessionItem = idCoursSessionItem;
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	/**
+	 * @return the typeCoursSession
+	 */
+	public String getTypeCoursSession() {
+		return typeCoursSession;
+	}
+
+	/**
+	 * @param typeCoursSession the typeCoursSession to set
+	 */
+	public void setTypeCoursSession(String typeCoursSession) {
+		this.typeCoursSession = typeCoursSession;
+	}
+
+	/**
+	 * @return the idCours
+	 */
+	public int getIdCours() {
+		return idCours;
+	}
+
+	/**
+	 * @param idCours the idCours to set
+	 */
+	public void setIdCours(int idCours) {
+		this.idCours = idCours;
 	}
 }
