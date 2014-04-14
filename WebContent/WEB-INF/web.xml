@@ -9,7 +9,6 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
-  
   <servlet>
     <servlet-name>Connexion</servlet-name>
     <servlet-class>servlets.Connexion</servlet-class>
@@ -18,5 +17,12 @@
     <servlet-name>Connexion</servlet-name>
     <url-pattern>/Connexion</url-pattern>
   </servlet-mapping>
-  
+  <servlet>
+    <servlet-name>Historique</servlet-name>
+    <servlet-class>servlets.Historique</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Historique</servlet-name>
+    <url-pattern>/Historique</url-pattern>
+  </servlet-mapping>
 </web-app>

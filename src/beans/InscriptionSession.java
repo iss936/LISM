@@ -1,6 +1,12 @@
 package beans;
 
+import hibernate.HibernateUtil;
+
 import java.io.Serializable;
+import java.util.List;
+
+import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 public class InscriptionSession implements Serializable{
 	
@@ -64,6 +70,29 @@ public class InscriptionSession implements Serializable{
 		if (idEtudiant != other.idEtudiant)
 			return false;
 		return true;
+	}
+	
+	public List<Cours> getMatiereSession(int idStudent)
+	{
+		List<Cours> mesCours= null;
+		Session sess = null;
+		try{
+			sess = HibernateUtil.getSessionFactory().openSession();
+			Transaction tx = sess.beginTransaction();
+			mesCours = sess.createQuery(" select {Cours.*} from InscriptionSession is, Etudiant e,CoursSession cs, Cours c,"
+					+ "where InscriptionSession.idEtudiant= Etudiant.idEtudiant "
+					+ "and InscriptionSession.idCoursSession=Courssession.idCoursSession"
+					+ "and CoursSession.idCours=Cours.idCours"
+					+ "and Etudiant.idStudent="+idStudent).list();
+			tx.commit();
+		}
+		catch(Exception ex){
+			ex.printStackTrace();
+		}
+		finally{
+			sess.close();
+		}
+		return mesCours;
 	}
 	
 	

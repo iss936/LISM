@@ -8,13 +8,14 @@
 </head>
 <body>
 <h1 align="center">Mes Cours</h1>
-<table align="center">
+<table align="center" border="1">
 <tr>
 <td> Matieres</td>
 <td> Date de début</td>
 <td> Date de fin</td>
 <td> Professeur</td>
 </tr>
+
 
 </table>
 
