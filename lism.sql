@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client: localhost
--- Généré le: Dim 13 Avril 2014 à 21:12
+-- Généré le: Lun 14 Avril 2014 à 21:16
 -- Version du serveur: 5.5.24-log
 -- Version de PHP: 5.3.13
 
@@ -53,6 +53,7 @@ CREATE TABLE IF NOT EXISTS `courssession` (
   `dateFin` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `description` varchar(2000) NOT NULL DEFAULT '',
   `idCours` int(10) unsigned NOT NULL DEFAULT '0',
+  `typeCoursSession` varchar(45) NOT NULL DEFAULT '',
   PRIMARY KEY (`idCoursSession`),
   KEY `FK_courssession_1` (`idCours`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
@@ -213,9 +214,9 @@ ALTER TABLE `evalsession`
 -- Contraintes pour la table `inscriptionsession`
 --
 ALTER TABLE `inscriptionsession`
-  ADD CONSTRAINT `inscriptionsession_ibfk_3` FOREIGN KEY (`idCoursSession`) REFERENCES `courssession` (`idCoursSession`),
   ADD CONSTRAINT `inscriptionsession_ibfk_1` FOREIGN KEY (`idEtudiant`) REFERENCES `etudiant` (`idEtudiant`),
-  ADD CONSTRAINT `inscriptionsession_ibfk_2` FOREIGN KEY (`idCoursSession`) REFERENCES `courssession` (`idCoursSession`);
+  ADD CONSTRAINT `inscriptionsession_ibfk_2` FOREIGN KEY (`idCoursSession`) REFERENCES `courssession` (`idCoursSession`),
+  ADD CONSTRAINT `inscriptionsession_ibfk_3` FOREIGN KEY (`idCoursSession`) REFERENCES `courssession` (`idCoursSession`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
