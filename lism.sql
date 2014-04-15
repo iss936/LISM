@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 3.5.1
+-- version 3.4.10.1
 -- http://www.phpmyadmin.net
 --
 -- Client: localhost
--- Généré le: Lun 14 Avril 2014 à 21:16
--- Version du serveur: 5.5.24-log
--- Version de PHP: 5.3.13
+-- Généré le : Mar 15 Avril 2014 à 22:00
+-- Version du serveur: 5.5.20
+-- Version de PHP: 5.3.10
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -30,7 +30,7 @@ CREATE TABLE IF NOT EXISTS `cours` (
   `idCours` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `libelleCours` varchar(45) NOT NULL DEFAULT '',
   PRIMARY KEY (`idCours`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
 --
 -- Contenu de la table `cours`
@@ -39,7 +39,9 @@ CREATE TABLE IF NOT EXISTS `cours` (
 INSERT INTO `cours` (`idCours`, `libelleCours`) VALUES
 (1, 'Anglais'),
 (2, 'Communication'),
-(3, 'Framework');
+(3, 'Framework'),
+(4, 'Informatique'),
+(5, 'Maths');
 
 -- --------------------------------------------------------
 
@@ -56,7 +58,14 @@ CREATE TABLE IF NOT EXISTS `courssession` (
   `typeCoursSession` varchar(45) NOT NULL DEFAULT '',
   PRIMARY KEY (`idCoursSession`),
   KEY `FK_courssession_1` (`idCours`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Contenu de la table `courssession`
+--
+
+INSERT INTO `courssession` (`idCoursSession`, `dateDebut`, `dateFin`, `description`, `idCours`, `typeCoursSession`) VALUES
+(1, '0000-09-01 00:00:00', '0000-09-02 00:00:00', 'Cours de programmation Java', 4, 'Présentiel');
 
 -- --------------------------------------------------------
 
@@ -66,14 +75,22 @@ CREATE TABLE IF NOT EXISTS `courssession` (
 
 CREATE TABLE IF NOT EXISTS `courssessionitem` (
   `idCoursSessionItem` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `dateHeureCours` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `idEnseignant` int(10) unsigned NOT NULL DEFAULT '0',
   `idSalle` int(10) unsigned NOT NULL DEFAULT '0',
   `idCoursSession` int(10) unsigned NOT NULL DEFAULT '0',
+  `descriptionDetail` varchar(2000) NOT NULL DEFAULT '',
   PRIMARY KEY (`idCoursSessionItem`),
   KEY `FK_courssessionitem_1` (`idEnseignant`),
-  KEY `FK_courssessionitem_2` (`idSalle`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  KEY `FK_courssessionitem_2` (`idSalle`),
+  KEY `FK_courssessionitem_3` (`idCoursSession`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Contenu de la table `courssessionitem`
+--
+
+INSERT INTO `courssessionitem` (`idCoursSessionItem`, `idEnseignant`, `idSalle`, `idCoursSession`, `descriptionDetail`) VALUES
+(1, 1, 2, 1, 'Cours sur framework java : hibernate');
 
 -- --------------------------------------------------------
 
@@ -88,7 +105,14 @@ CREATE TABLE IF NOT EXISTS `enseignant` (
   `login` varchar(45) NOT NULL DEFAULT '',
   `mdp` varchar(45) NOT NULL DEFAULT '',
   PRIMARY KEY (`idEnseignant`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Contenu de la table `enseignant`
+--
+
+INSERT INTO `enseignant` (`idEnseignant`, `prenomEnseignant`, `nomEnseignant`, `login`, `mdp`) VALUES
+(1, 'Nedra', 'Mellouli-Nauwynck', 'nmellouli', 'nmellouli');
 
 -- --------------------------------------------------------
 
@@ -103,14 +127,15 @@ CREATE TABLE IF NOT EXISTS `etudiant` (
   `login` varchar(45) NOT NULL DEFAULT '',
   `mdp` varchar(45) NOT NULL DEFAULT '',
   PRIMARY KEY (`idEtudiant`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Contenu de la table `etudiant`
 --
 
 INSERT INTO `etudiant` (`idEtudiant`, `prenomEtudiant`, `nomEtudiant`, `login`, `mdp`) VALUES
-(1, 'Lionel', 'Lienafa', 'llienafa', 'llienafa');
+(1, 'Lionel', 'Lienafa', 'llienafa', 'llienafa'),
+(2, 'Mostafa', 'BIAICH', 'admin', 'admin');
 
 -- --------------------------------------------------------
 
@@ -193,6 +218,7 @@ ALTER TABLE `courssession`
 -- Contraintes pour la table `courssessionitem`
 --
 ALTER TABLE `courssessionitem`
+  ADD CONSTRAINT `FK_courssessionitem_3` FOREIGN KEY (`idCoursSession`) REFERENCES `courssession` (`idCoursSession`),
   ADD CONSTRAINT `FK_courssessionitem_1` FOREIGN KEY (`idEnseignant`) REFERENCES `enseignant` (`idEnseignant`),
   ADD CONSTRAINT `FK_courssessionitem_2` FOREIGN KEY (`idSalle`) REFERENCES `salle` (`idSalle`);
 
@@ -215,8 +241,7 @@ ALTER TABLE `evalsession`
 --
 ALTER TABLE `inscriptionsession`
   ADD CONSTRAINT `inscriptionsession_ibfk_1` FOREIGN KEY (`idEtudiant`) REFERENCES `etudiant` (`idEtudiant`),
-  ADD CONSTRAINT `inscriptionsession_ibfk_2` FOREIGN KEY (`idCoursSession`) REFERENCES `courssession` (`idCoursSession`),
-  ADD CONSTRAINT `inscriptionsession_ibfk_3` FOREIGN KEY (`idCoursSession`) REFERENCES `courssession` (`idCoursSession`);
+  ADD CONSTRAINT `inscriptionsession_ibfk_2` FOREIGN KEY (`idCoursSession`) REFERENCES `courssession` (`idCoursSession`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
