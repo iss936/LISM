@@ -5,7 +5,8 @@
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <% List<CoursSession> lesCoursSession = (List<CoursSession>)session.getAttribute("lesCoursSession"); %>
-<% Cours c = (Cours)session.getAttribute("c"); %>
+<% List<CoursSessionItem> lesCoursSessionItem = (List<CoursSessionItem>)session.getAttribute("lesCoursSessionItem"); %>
+<% CoursSession cs = (CoursSession)session.getAttribute("coursession"); %>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" >
 	<head>
 		<title>Titre du site</title>
@@ -160,7 +161,7 @@
 						<!-- Fin du menu horizontal -->
 
 						<div id="texte"><div id="overflow">
-							<div class="cadre"><div class="titre"> Liste des cours pour la matière suivante : <% out.print(c.getLibelleCours()); %></div><div class="marge_interne">
+							<div class="cadre"><div class="titre"> Détails et Inscription pour le cours suivant : <% out.print(cs.getDescription()); %></div><div class="marge_interne">
 
 								<!-- Début de la zone de texte -->
 								
@@ -169,14 +170,14 @@
 									<td>Intitulé</td>
 									<td>Date</td>
 									<td>Type de Cours</td>
-									<td>Détails</td>
+									<td>Detail</td>
 									</tr>
-									<% for(int i = 0; i < lesCoursSession.size(); i++) { %>
+									<% for(int i = 0; i < lesCoursSessionItem.size(); i++) { %>
 									<tr>
 										<td><% out.print(lesCoursSession.get(i).getDescription()); %></td>
 										<td><% out.print(lesCoursSession.get(i).getDateDebut()); %></td>
 										<td><% out.print(lesCoursSession.get(i).getTypeCoursSession()); %></td>
-										<td><a href="FicheCoursSessionItem?idCoursSession=<% out.print(lesCoursSession.get(i).getIdCoursSession()); %>">En Savoir Plus</a></td>
+										<td><% out.print(lesCoursSessionItem.get(i).getDescriptionDetail()); %></td>
 									</tr>
 									<% } %>
 								</table>

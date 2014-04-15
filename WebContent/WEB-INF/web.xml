@@ -33,4 +33,12 @@
     <servlet-name>FicheCoursSession</servlet-name>
     <url-pattern>/FicheCoursSession</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>FicheCoursSessionItem</servlet-name>
+    <servlet-class>servlets.FicheCoursSessionItem</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>FicheCoursSessionItem</servlet-name>
+    <url-pattern>/FicheCoursSessionItem</url-pattern>
+  </servlet-mapping>
 </web-app>

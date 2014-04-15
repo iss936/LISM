@@ -12,34 +12,34 @@ import javax.servlet.http.HttpSession;
 import beans.Etudiant;
 
 /**
- * Servlet implementation class Historique2
- */
+* Servlet implementation class Historique2
+*/
 public class Historique2 extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+private static final long serialVersionUID = 1L;
        
     /**
-     * @see HttpServlet#HttpServlet()
-     */
+* @see HttpServlet#HttpServlet()
+*/
     public Historique2() {
         super();
         // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		Etudiant e =null;
-		HttpSession session = request.getSession();
-		e=(Etudiant) session.getAttribute("etudiant");
-	}
+/**
+* @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+*/
+protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+// TODO Auto-generated method stub
+Etudiant e =null;
+HttpSession session = request.getSession();
+e=(Etudiant) session.getAttribute("etudiant");
+}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-	}
+/**
+* @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+*/
+protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+// TODO Auto-generated method stub
+}
 
 }

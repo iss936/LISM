@@ -8,14 +8,17 @@
             <column name="IDCOURSSESSIONITEM" />
             <generator class="assigned" />
         </id>
-        <property name="dateHeureCours" type="java.sql.Date">
-            <column name="DATEHEURECOURS" />
-        </property>
         <property name="idEnseignant" type="int">
             <column name="IDENSEIGNANT" />
         </property>
         <property name="idSalle" type="int">
             <column name="IDSALLE" />
+        </property>
+        <property name="idCoursSession" type="int">
+            <column name="IDCOURSSESSION" />
+        </property>
+        <property name="descriptionDetail" type="java.lang.String">
+            <column name="DESCRIPTIONDETAIL" />
         </property>
     </class>
 </hibernate-mapping>

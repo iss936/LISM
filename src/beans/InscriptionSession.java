@@ -38,6 +38,7 @@ public class InscriptionSession implements Serializable{
 		return idCoursSession;
 	}
 	
+	
 	public void setIdCoursSession(int idCoursSession) {
 		this.idCoursSession = idCoursSession;
 	}
@@ -93,6 +94,24 @@ public class InscriptionSession implements Serializable{
 			sess.close();
 		}
 		return mesCours;
+	}
+	
+	public void addInscriptionSession(int idEtudiant, int idCoursSession) {
+		Session sess = null;
+		try{
+			sess = HibernateUtil.getSessionFactory().openSession();
+			Transaction tx = sess.beginTransaction();
+			InscriptionSession ins = new InscriptionSession(idEtudiant,idCoursSession);
+			sess.save(ins);
+			tx.commit();
+		}
+		catch(Exception ex){
+		      ex.printStackTrace();
+		      System.out.println("Insertion échouée " + ex.getMessage());
+		}
+		finally{
+			sess.close();
+		}
 	}
 	
 	

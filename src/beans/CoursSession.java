@@ -133,4 +133,22 @@ public class CoursSession {
 		}
 		return lesCoursSession;
 	}
+	
+	public static CoursSession getUnCoursSession(int idCoursSession) {
+		CoursSession cs = new CoursSession();
+		Session sess = null;
+		try{
+			sess = HibernateUtil.getSessionFactory().openSession();
+			Transaction tx = sess.beginTransaction();
+			cs = (CoursSession) sess.createQuery(" from CoursSession where idCours=" + idCoursSession).list().get(0);
+			tx.commit();
+		}
+		catch(Exception ex){
+			ex.printStackTrace();
+		}
+		finally{
+			sess.close();
+		}
+		return cs;
+	}
 }

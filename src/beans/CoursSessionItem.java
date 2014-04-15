@@ -1,23 +1,47 @@
 package beans;
 
-import java.sql.Date;
+import hibernate.HibernateUtil;
+
+import java.util.List;
+
+import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 public class CoursSessionItem {
 
 	private int idCoursSessionItem;
-	private Date dateHeureCours;
 	private int idEnseignant;
 	private int idSalle;
+	private int idCoursSession;
+	private String descriptionDetail;
 	
-	public CoursSessionItem(int idCoursSessionItem, Date dateHeureCours, int idEnseignant, int idSalle) {
+	public CoursSessionItem(int idCoursSessionItem, int idEnseignant, int idSalle, int idCoursSession, String descriptionDetail) {
 		this.setIdCoursSessionItem(idCoursSessionItem);
-		this.setDateHeureCours(dateHeureCours);
 		this.setIdEnseignant(idEnseignant);
 		this.setIdSalle(idSalle);
+		this.setIdSalle(idSalle);
+		this.setIdCoursSession(idCoursSession);
+		
 	}
-	
+
 	public CoursSessionItem() {
 		
+	}
+	
+	public int getIdCoursSession() {
+		return idCoursSession;
+	}
+
+	public void setIdCoursSession(int idCoursSession) {
+		this.idCoursSession = idCoursSession;
+	}
+
+	public String getDescriptionDetail() {
+		return descriptionDetail;
+	}
+
+	public void setDescriptionDetail(String descriptionDetail) {
+		this.descriptionDetail = descriptionDetail;
 	}
 
 	/**
@@ -32,20 +56,6 @@ public class CoursSessionItem {
 	 */
 	public void setIdCoursSessionItem(int idCoursSessionItem) {
 		this.idCoursSessionItem = idCoursSessionItem;
-	}
-
-	/**
-	 * @return the dateHeureCours
-	 */
-	public Date getDateHeureCours() {
-		return dateHeureCours;
-	}
-
-	/**
-	 * @param dateHeureCours the dateHeureCours to set
-	 */
-	public void setDateHeureCours(Date dateHeureCours) {
-		this.dateHeureCours = dateHeureCours;
 	}
 
 	/**
@@ -74,5 +84,25 @@ public class CoursSessionItem {
 	 */
 	public void setIdSalle(int idSalle) {
 		this.idSalle = idSalle;
+	}
+	
+	public static List<CoursSessionItem> getLesCoursSessionItem(int idCoursSession) {
+		int coursSession = idCoursSession;
+		List<CoursSessionItem> lesCoursSessionItems = null;
+		Session sess = null;
+		try{
+			sess = HibernateUtil.getSessionFactory().openSession();
+			Transaction tx = sess.beginTransaction();
+			lesCoursSessionItems = sess.createQuery(" from CoursSessionItem where idCoursSession=" + coursSession).list();
+		    tx.commit();
+		}
+		catch(Exception ex){
+		      ex.printStackTrace();
+		      System.out.println("Lecture échouée " + ex.getMessage());
+		}
+		finally{
+			sess.close();
+		}
+		return lesCoursSessionItems;
 	}
 }
