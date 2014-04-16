@@ -6,7 +6,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <% List<CoursSession> lesCoursSession = (List<CoursSession>)session.getAttribute("lesCoursSession"); %>
 <% List<CoursSessionItem> lesCoursSessionItem = (List<CoursSessionItem>)session.getAttribute("lesCoursSessionItem"); %>
-<% CoursSession cs = (CoursSession)session.getAttribute("coursession"); %>
+<% CoursSession courssession = (CoursSession)session.getAttribute("coursession"); %>
+<% Salle lasalle = (Salle)session.getAttribute("lasalle"); %>
+<% Enseignant unenseignant = (Enseignant)session.getAttribute("unenseignant"); %>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" >
 	<head>
 		<title>Titre du site</title>
@@ -161,23 +163,39 @@
 						<!-- Fin du menu horizontal -->
 
 						<div id="texte"><div id="overflow">
-							<div class="cadre"><div class="titre"> Détails et Inscription pour le cours suivant : <% out.print(cs.getDescription()); %></div><div class="marge_interne">
+							<div class="cadre"><div class="titre"> Détails et Inscription pour le cours choisi</div><div class="marge_interne">
 
 								<!-- Début de la zone de texte -->
 								
 								<table>
-									<tr>
-									<td>Intitulé</td>
-									<td>Date</td>
-									<td>Type de Cours</td>
-									<td>Detail</td>
-									</tr>
 									<% for(int i = 0; i < lesCoursSessionItem.size(); i++) { %>
 									<tr>
+										<td>Intitulé : </td>
 										<td><% out.print(lesCoursSession.get(i).getDescription()); %></td>
+									</tr>
+									<tr>
+										<td>Date de début : </td>
 										<td><% out.print(lesCoursSession.get(i).getDateDebut()); %></td>
+									</tr>
+									<tr>
+										<td>Date de Fin : </td>
+										<td><% out.print(lesCoursSession.get(i).getDateFin()); %></td>
+									</tr>
+									<tr>
+										<td>Type de Cours : </td>
 										<td><% out.print(lesCoursSession.get(i).getTypeCoursSession()); %></td>
+									</tr>
+									<tr>
+										<td>Description détails : </td>
 										<td><% out.print(lesCoursSessionItem.get(i).getDescriptionDetail()); %></td>
+									</tr>
+									<tr>
+										<td>Salle : </td>
+										<td><% out.print(lasalle.getLaSalle(lesCoursSessionItem.get(i).getIdSalle()).getLibelleSalle()); %></td>
+									</tr>
+									<tr>
+										<td>Enseignant : </td>
+										<td><% out.print(unenseignant.getUnEnseignant(lesCoursSessionItem.get(i).getIdEnseignant()).getNomEnseignant()); %> <% out.print(unenseignant.getUnEnseignant(lesCoursSessionItem.get(i).getIdEnseignant()).getPrenomEnseignant()); %></td>
 									</tr>
 									<% } %>
 								</table>

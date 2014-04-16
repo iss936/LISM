@@ -112,7 +112,7 @@
 								</div> -->
 							</div>
 							<div class="groupe_lien_MH">
-								<a class="menu_MH" href="#">Mes cours</a>
+								<a class="menu_MH" href="mesCours.jsp">Mes cours</a>
 								<div class="groupe_sublien_MH">
 									<div class="sublien_MH">
 										<a href="#">Sous-menu 1</a>

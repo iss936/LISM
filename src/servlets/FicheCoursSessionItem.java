@@ -10,6 +10,8 @@ import javax.servlet.http.HttpSession;
 
 import beans.CoursSession;
 import beans.CoursSessionItem;
+import beans.Enseignant;
+import beans.Salle;
 
 public class FicheCoursSessionItem extends HttpServlet {
 	
@@ -18,12 +20,16 @@ public class FicheCoursSessionItem extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 		    throws ServletException, IOException {
 				HttpSession session = request.getSession();
-				int idCours = Integer.parseInt(request.getParameter("idCours"));
 				int idCoursSession = Integer.parseInt(request.getParameter("idCoursSession"));
-				CoursSession coursession = CoursSession.getUnCoursSession(idCoursSession);
-				session.setAttribute("cs", coursession);
+				CoursSession courssession = CoursSession.getUnCoursSession(idCoursSession);
+				int idSalle = CoursSessionItem.getCoursSessionItem(idCoursSession).getIdSalle();
+				int idCours = courssession.getIdCours();
+				int idEnseignant = CoursSessionItem.getCoursSessionItem(idCoursSession).getIdEnseignant();
+				session.setAttribute("unenseignant", Enseignant.getUnEnseignant(idEnseignant));
+				session.setAttribute("lasalle", Salle.getLaSalle(idSalle));
+				session.setAttribute("courssession", courssession);
 				session.setAttribute("lesCoursSession", CoursSession.getLesCoursSession(idCours));
-				session.setAttribute("lesCoursSessionItems", CoursSessionItem.getLesCoursSessionItem(idCoursSession));
+				session.setAttribute("lesCoursSessionItem", CoursSessionItem.getLesCoursSessionItem(idCoursSession));
 				response.sendRedirect("coursDetailInscription.jsp");
 				
 	}	

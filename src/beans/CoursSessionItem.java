@@ -88,12 +88,12 @@ public class CoursSessionItem {
 	
 	public static List<CoursSessionItem> getLesCoursSessionItem(int idCoursSession) {
 		int coursSession = idCoursSession;
-		List<CoursSessionItem> lesCoursSessionItems = null;
+		List<CoursSessionItem> lesCoursSessionItem = null;
 		Session sess = null;
 		try{
 			sess = HibernateUtil.getSessionFactory().openSession();
 			Transaction tx = sess.beginTransaction();
-			lesCoursSessionItems = sess.createQuery(" from CoursSessionItem where idCoursSession=" + coursSession).list();
+			lesCoursSessionItem = sess.createQuery(" from CoursSessionItem where idCoursSession=" + coursSession).list();
 		    tx.commit();
 		}
 		catch(Exception ex){
@@ -103,6 +103,24 @@ public class CoursSessionItem {
 		finally{
 			sess.close();
 		}
-		return lesCoursSessionItems;
+		return lesCoursSessionItem;
+	}
+	
+	public static CoursSessionItem getCoursSessionItem(int idSession) {
+		CoursSessionItem csi = new CoursSessionItem();
+		Session sess = null;
+		try{
+			sess = HibernateUtil.getSessionFactory().openSession();
+			Transaction tx = sess.beginTransaction();
+			csi = (CoursSessionItem) sess.createQuery(" from CoursSessionItem where idSession=" + idSession).list().get(0);
+			tx.commit();
+		}
+		catch(Exception ex){
+			ex.printStackTrace();
+		}
+		finally{
+			sess.close();
+		}
+		return csi;
 	}
 }

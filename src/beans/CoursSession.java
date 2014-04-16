@@ -140,7 +140,7 @@ public class CoursSession {
 		try{
 			sess = HibernateUtil.getSessionFactory().openSession();
 			Transaction tx = sess.beginTransaction();
-			cs = (CoursSession) sess.createQuery(" from CoursSession where idCours=" + idCoursSession).list().get(0);
+			cs = (CoursSession) sess.createQuery(" from CoursSession where idCoursSession=" + idCoursSession).list().get(0);
 			tx.commit();
 		}
 		catch(Exception ex){
