@@ -198,7 +198,16 @@
 										<td><% out.print(unenseignant.getUnEnseignant(lesCoursSessionItem.get(i).getIdEnseignant()).getNomEnseignant()); %> <% out.print(unenseignant.getUnEnseignant(lesCoursSessionItem.get(i).getIdEnseignant()).getPrenomEnseignant()); %></td>
 									</tr>
 									<% } %>
+									<tr>
+										<td colspan ="2" align="center">
+										<form method="POST" action="InscriptionCours">
+										<input type="submit" value="s'incrire" >
+										<input type="button" onclick="javascript:history.back()" value="Retour" >
+										</form>
+										</td>
+									</tr>
 								</table>
+							
 								
 								<!-- Fin de la zone de texte -->
 

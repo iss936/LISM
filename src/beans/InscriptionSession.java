@@ -96,7 +96,7 @@ public class InscriptionSession implements Serializable{
 		return mesCours;
 	}
 	
-	public void addInscriptionSession(int idEtudiant, int idCoursSession) {
+	public static void addInscriptionSession(int idEtudiant, int idCoursSession) {
 		Session sess = null;
 		try{
 			sess = HibernateUtil.getSessionFactory().openSession();

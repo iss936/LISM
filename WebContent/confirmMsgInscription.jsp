@@ -2,9 +2,8 @@
 <%@page import="beans.*" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<c:set scope="session" var="erreurs" value="${sessionScope['erreurs']}" />
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<% List<Cours> lesCours = (List<Cours>)session.getAttribute("lesCours"); %>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" >
 	<head>
 		<title>LISM</title>
@@ -20,9 +19,8 @@
 			<script type="text/javascript">
 				$(function()
 				{
-					$(
-					b$'.groupe_lien_MH').hover
-					(s
+					$('.groupe_lien_MH').hover
+					(
 						function()
 						{
 							$(this).addClass('groupe_lien_MH_hover');
@@ -94,21 +92,77 @@
 
 						<div id="banniere"><div id="logo"></div></div>
 
+						<!-- Début du menu horizontal -->
+						<div id="MH">
+							<div class="groupe_lien_MH">
+								<a class="menu_MH" href="Connexion">Accueil</a>
+								<!-- <div class="groupe_sublien_MH">
+									<div class="sublien_MH">
+										<a href="#">Sous-menu 1</a>
+									</div>
+									<div class="sublien_MH">
+										<a href="#">Sous-menu 2</a>
+									</div>
+									<div class="sublien_MH">
+										<a href="#">Sous-menu 3</a>
+									</div>
+									<div class="MH_deroulant_bottom"></div>
+								</div> -->
+							</div>
+							<div class="groupe_lien_MH">
+								<a class="menu_MH" href="mesCours.jsp">Mes cours</a>
+								<div class="groupe_sublien_MH">
+									<div class="sublien_MH">
+										<a href="#">Sous-menu 1</a>
+									</div>
+									<div class="sublien_MH">
+										<a href="#">Sous-menu 2</a>
+									</div>
+									<div class="sublien_MH">
+										<a href="#">Sous-menu 3</a>
+									</div>
+									<div class="MH_deroulant_bottom"></div>
+								</div>
+							</div>
+							<div class="groupe_lien_MH">
+								<a class="menu_MH" href="#">Mes évaluations</a>
+								<div class="groupe_sublien_MH">
+									<div class="sublien_MH">
+										<a href="#">Sous-menu 1</a>
+									</div>
+									<div class="sublien_MH">
+										<a href="#">Sous-menu 2</a>
+									</div>
+									<div class="sublien_MH">
+										<a href="#">Sous-menu 3</a>
+									</div>
+									<div class="MH_deroulant_bottom"></div>
+								</div>
+							</div>
+							<div class="groupe_lien_MH">
+								<a class="menu_MH" href="#">Menu 4</a>
+								<div class="groupe_sublien_MH">
+									<div class="sublien_MH">
+										<a href="#">Sous-menu 1</a>
+									</div>
+									<div class="sublien_MH">
+										<a href="#">Sous-menu 2</a>
+									</div>
+									<div class="sublien_MH">
+										<a href="#">Sous-menu 3</a>
+									</div>
+									<div class="MH_deroulant_bottom"></div>
+								</div>
+							</div>
+						</div>
+						<!-- Fin du menu horizontal -->
+
 						<div id="texte"><div id="overflow">
-							<div class="cadre"><div class="titre"> Connexion </div><div class="marge_interne">
+							<div class="cadre"><div class="titre"> Les cours </div><div class="marge_interne">
 
 								<!-- Début de la zone de texte -->
 								
-		<form method="POST" action="Connexion">
-		<label for="login">Login</label><input id="login" name="login" type="text"> <br>
-		<label for="mdp">Mot de passe</label><input id="mdp" name="mdp" type="password"> <br>
-		<label>Validation :</label><input name="ok" type="submit" value="Ok"/>
-	
-		<c:if test="${erreurs}">
-			<br>
-			<span class='error'>Login ou mot de passe incorrect !</span>  
-		</c:if>
-	</form>
+								<h1>Vous etes bien inscrit à ce cours</h1>
 								
 								<!-- Fin de la zone de texte -->
 
@@ -129,7 +183,3 @@
 
 	</body>
 </html>
-
-
-
-
