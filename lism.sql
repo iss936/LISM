@@ -134,8 +134,7 @@ CREATE TABLE IF NOT EXISTS `etudiant` (
 --
 
 INSERT INTO `etudiant` (`idEtudiant`, `prenomEtudiant`, `nomEtudiant`, `login`, `mdp`) VALUES
-(1, 'Lionel', 'Lienafa', 'llienafa', 'llienafa'),
-(2, 'Mostafa', 'BIAICH', 'admin', 'admin');
+(1, 'Lionel', 'Lienafa', 'llienafa', 'llienafa');
 
 -- --------------------------------------------------------
 
